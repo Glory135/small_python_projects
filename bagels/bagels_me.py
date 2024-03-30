@@ -1,11 +1,10 @@
 import random
 
+# constants
+MAX_GUESSES = 10
+GUESS_DIGIT_NUM = 3
 
 def main() -> None:
-    # constants
-    MAX_GUESSES = 10
-    GUESS_DIGIT_NUM = 3
-
     while True:
         # secret numbers
         secretNum = getSecretNum(GUESS_DIGIT_NUM)
