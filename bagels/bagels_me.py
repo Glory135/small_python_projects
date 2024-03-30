@@ -7,16 +7,16 @@ GUESS_DIGIT_NUM = 3
 def main() -> None:
     while True:
         # secret numbers
-        secretNum = getSecretNum(GUESS_DIGIT_NUM)
+        secretNum = get_secretNum(GUESS_DIGIT_NUM)
         num_of_tries = 1
 
         while num_of_tries <= MAX_GUESSES:
             guess = ""
-            while not isValidGuess(guess, GUESS_DIGIT_NUM):
+            while not is_valid_guess(guess, GUESS_DIGIT_NUM):
                 print(f"Enter Guess {num_of_tries}")
                 guess = input("> ")
             num_of_tries += 1
-            clues = getClues(guess, secretNum)
+            clues = get_clues(guess, secretNum)
             print(clues)
 
             if guess == secretNum:
@@ -31,7 +31,7 @@ def main() -> None:
     print("Thanks for playing!!")
 
 
-def getSecretNum(GUESS_DIGIT_NUM: int) -> str:
+def get_secretNum(GUESS_DIGIT_NUM: int) -> str:
     """Returns a string of 3 random numbers without repetition"""
     nums = list("0123456789")
     random.shuffle(nums)
@@ -41,7 +41,7 @@ def getSecretNum(GUESS_DIGIT_NUM: int) -> str:
     return res
 
 
-def isValidGuess(guess: str, GUESS_DIGIT_NUM: int) -> bool:
+def is_valid_guess(guess: str, GUESS_DIGIT_NUM: int) -> bool:
     """checks it a guess is valid or not"""
     if len(guess) == GUESS_DIGIT_NUM and guess.isdigit():
         if guess[0] == guess[1] or guess[0] == guess[2] or guess[1] == guess[2]:
@@ -51,7 +51,7 @@ def isValidGuess(guess: str, GUESS_DIGIT_NUM: int) -> bool:
     return False
 
 
-def getClues(guess: str, secretNum: str) -> str:
+def get_clues(guess: str, secretNum: str) -> str:
     """compares the user input to the secret number and returns clues to get te answer right"""
     clues = []
     if guess == secretNum:
