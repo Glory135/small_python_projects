@@ -7,7 +7,7 @@ GUESS_DIGIT_NUM = 3
 def main() -> None:
     while True:
         # secret numbers
-        secretNum = get_secretNum(GUESS_DIGIT_NUM)
+        secret_num = get_secret_num(GUESS_DIGIT_NUM)
         num_of_tries = 1
 
         while num_of_tries <= MAX_GUESSES:
@@ -16,14 +16,14 @@ def main() -> None:
                 print(f"Enter Guess {num_of_tries}")
                 guess = input("> ")
             num_of_tries += 1
-            clues = get_clues(guess, secretNum)
+            clues = get_clues(guess, secret_num)
             print(clues)
 
-            if guess == secretNum:
+            if guess == secret_num:
                 break
             if num_of_tries > MAX_GUESSES:
                 print("you have exhausted your number of tries")
-                print(f"the answer was {secretNum}")
+                print(f"the answer was {secret_num}")
         print("Do you want to play again? (yes or no)")
         ans = input("> ")
         if not ans.lower().startswith("y"):
@@ -31,7 +31,7 @@ def main() -> None:
     print("Thanks for playing!!")
 
 
-def get_secretNum(GUESS_DIGIT_NUM: int) -> str:
+def get_secret_num(GUESS_DIGIT_NUM: int) -> str:
     """Returns a string of 3 random numbers without repetition"""
     nums = list("0123456789")
     random.shuffle(nums)
@@ -51,16 +51,16 @@ def is_valid_guess(guess: str, GUESS_DIGIT_NUM: int) -> bool:
     return False
 
 
-def get_clues(guess: str, secretNum: str) -> str:
+def get_clues(guess: str, secret_num: str) -> str:
     """compares the user input to the secret number and returns clues to get te answer right"""
     clues = []
-    if guess == secretNum:
+    if guess == secret_num:
         return "You got it"
     else:
-        for i in range(len(secretNum)):
-            if guess[i] == secretNum[i]:
+        for i in range(len(secret_num)):
+            if guess[i] == secret_num[i]:
                 clues.append("Fermi")
-            elif guess[i] in secretNum:
+            elif guess[i] in secret_num:
                 clues.append("Pico")
         clues.sort()
 
