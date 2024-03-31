@@ -44,9 +44,13 @@ def get_secret_num(GUESS_DIGIT_NUM: int) -> str:
 def is_valid_guess(guess: str, GUESS_DIGIT_NUM: int) -> bool:
     """checks it a guess is valid or not"""
     if len(guess) == GUESS_DIGIT_NUM and guess.isdigit():
-        if guess[0] == guess[1] or guess[0] == guess[2] or guess[1] == guess[2]:
-            print("all digits should be unique")
-            return False
+        guess_arr = [i for i in guess]
+        # check if we have any repeating number
+        for a, single_guess_A in enumerate(guess_arr):
+            for single_guess_B in guess_arr[a+1:]:
+                if single_guess_A == single_guess_B:
+                    print("all digits should be unique")
+                    return False
         return True
     return False
 
