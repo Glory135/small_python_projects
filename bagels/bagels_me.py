@@ -4,6 +4,7 @@ import random
 MAX_GUESSES = 10
 GUESS_DIGIT_NUM = 3
 
+
 def main() -> None:
     while True:
         # secret numbers
@@ -47,7 +48,7 @@ def is_valid_guess(guess: str, GUESS_DIGIT_NUM: int) -> bool:
         guess_arr = [i for i in guess]
         # check if we have any repeating number
         for a, single_guess_A in enumerate(guess_arr):
-            for single_guess_B in guess_arr[a+1:]:
+            for single_guess_B in guess_arr[a + 1 :]:
                 if single_guess_A == single_guess_B:
                     print("all digits should be unique")
                     return False
