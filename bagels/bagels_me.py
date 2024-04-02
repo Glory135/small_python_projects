@@ -5,7 +5,7 @@ MAX_GUESSES = 10
 GUESS_DIGIT_NUM = 3
 
 
-def main() -> None:
+def main():
     while True:
         # secret numbers
         secret_num = get_secret_num(GUESS_DIGIT_NUM)

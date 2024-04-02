@@ -1,6 +1,5 @@
 import datetime
 import random
-import typing
 
 MONTHS = (
     "Jan",
@@ -69,7 +68,7 @@ def main() -> None:
     print("That's probably more than you would think!")
 
 
-def get_birthdays(num_of_birthdays: int) -> typing.List[datetime.date]:
+def get_birthdays(num_of_birthdays: int) -> list[datetime.date]:
     """Returns a list of random dates in a year"""
     birthdays = []
 
@@ -83,7 +82,7 @@ def get_birthdays(num_of_birthdays: int) -> typing.List[datetime.date]:
     return birthdays
 
 
-def get_match(birthdays: typing.List[datetime.date]):
+def get_match(birthdays: list[datetime.date]):
     """Finds who has the same birthday as you"""
     if len(birthdays) == len(set(birthdays)):
         return None
